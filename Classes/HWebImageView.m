@@ -7,8 +7,8 @@
 //
 
 #import "HWebImageView.h"
-#import "SDWebImageManager.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImageManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HWebImageView ()
 @property (nonatomic) NSString *lastURL;

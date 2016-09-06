@@ -7,9 +7,9 @@
 //
 
 #import "HWebButtonView.h"
-#import "SDWebImageManager.h"
-#import "UIButton+WebCache.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImageManager.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HWebButtonView()
 @property (nonatomic) NSString *lastURL;
