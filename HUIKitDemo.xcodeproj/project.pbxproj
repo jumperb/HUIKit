@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00BEDDFA1C5862C1002E3228 /* HWebButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BEDDF71C5862C1002E3228 /* HWebButtonView.m */; };
+		0002CCA41D7F0E0300214256 /* HWebButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BEDDF71C5862C1002E3228 /* HWebButtonView.m */; };
 		00BEDDFB1C5862C1002E3228 /* HWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BEDDF91C5862C1002E3228 /* HWebImageView.m */; };
-		00CB56351C33738000380F74 /* HWebButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CB56321C33738000380F74 /* HWebButtonView.m */; };
-		00CB56361C33738000380F74 /* HWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CB56341C33738000380F74 /* HWebImageView.m */; };
 		3E8DA8B11BFEF72900A44E7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B01BFEF72900A44E7D /* main.m */; };
 		3E8DA8B41BFEF72900A44E7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B31BFEF72900A44E7D /* AppDelegate.m */; };
 		3E8DA8B71BFEF72900A44E7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B61BFEF72900A44E7D /* ViewController.m */; };
@@ -236,12 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00BEDDFA1C5862C1002E3228 /* HWebButtonView.m in Sources */,
-				00CB56351C33738000380F74 /* HWebButtonView.m in Sources */,
 				00BEDDFB1C5862C1002E3228 /* HWebImageView.m in Sources */,
+				0002CCA41D7F0E0300214256 /* HWebButtonView.m in Sources */,
 				3E8DA8B71BFEF72900A44E7D /* ViewController.m in Sources */,
 				3E8DA8B41BFEF72900A44E7D /* AppDelegate.m in Sources */,
-				00CB56361C33738000380F74 /* HWebImageView.m in Sources */,
 				3E8DA8B11BFEF72900A44E7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
