@@ -1,7 +1,7 @@
-platform :ios, :deployment_target => "7.0"
-source 'git@192.168.1.33:HSpecs'
-source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
 
-pod "Hodor"
-pod "SDWebImage"
-pod "SDWebImage/WebP"
+target 'HUIKitDemo' do
+  use_frameworks!
+  pod "Hodor"
+  pod "SDWebImage"
+end

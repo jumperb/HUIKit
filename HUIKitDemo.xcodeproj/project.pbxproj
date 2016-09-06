@@ -13,7 +13,7 @@
 		3E8DA8B41BFEF72900A44E7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B31BFEF72900A44E7D /* AppDelegate.m */; };
 		3E8DA8B71BFEF72900A44E7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B61BFEF72900A44E7D /* ViewController.m */; };
 		3E8DA8BC1BFEF72900A44E7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E8DA8BB1BFEF72900A44E7D /* Assets.xcassets */; };
-		EE5443DFF0052AA25B85B119 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8893EF6727FEE8E5983D812 /* libPods.a */; };
+		672888A7D23F88D8B8AAEDCD /* Pods_HUIKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38468502F9B4D54B0F67B45 /* Pods_HUIKitDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		3E8DA8B61BFEF72900A44E7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3E8DA8BB1BFEF72900A44E7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E8DA8C01BFEF72900A44E7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57E3878CB53025AB8F5D0ACA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B7B1BE4AF141F7163F8977DD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		D8893EF6727FEE8E5983D812 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CE005BEC86E8667721F2B77 /* Pods-HUIKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HUIKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HUIKitDemo/Pods-HUIKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		6F299592B9A7AC16C8926056 /* Pods-HUIKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HUIKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HUIKitDemo/Pods-HUIKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C38468502F9B4D54B0F67B45 /* Pods_HUIKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HUIKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE5443DFF0052AA25B85B119 /* libPods.a in Frameworks */,
+				672888A7D23F88D8B8AAEDCD /* Pods_HUIKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,19 +72,11 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		13BBFF1567395A3F39B05411 /* Frameworks */ = {
+		0F4819C556BC603552362DA9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D8893EF6727FEE8E5983D812 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2AE948B397AF0D608D5B8BAA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B7B1BE4AF141F7163F8977DD /* Pods.debug.xcconfig */,
-				57E3878CB53025AB8F5D0ACA /* Pods.release.xcconfig */,
+				6F299592B9A7AC16C8926056 /* Pods-HUIKitDemo.debug.xcconfig */,
+				6CE005BEC86E8667721F2B77 /* Pods-HUIKitDemo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -95,8 +87,8 @@
 				00BEDDF51C5862C1002E3228 /* Classes */,
 				3E8DA8AE1BFEF72900A44E7D /* HUIKitDemo */,
 				3E8DA8AD1BFEF72900A44E7D /* Products */,
-				2AE948B397AF0D608D5B8BAA /* Pods */,
-				13BBFF1567395A3F39B05411 /* Frameworks */,
+				0F4819C556BC603552362DA9 /* Pods */,
+				634800185F6C4C623E5C2ED6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +123,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		634800185F6C4C623E5C2ED6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C38468502F9B4D54B0F67B45 /* Pods_HUIKitDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,11 +138,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E8DA8D91BFEF72900A44E7D /* Build configuration list for PBXNativeTarget "HUIKitDemo" */;
 			buildPhases = (
-				BAEB429F3530A1C6FEABDC3E /* Check Pods Manifest.lock */,
+				ED87668912021129CA31BDCE /* [CP] Check Pods Manifest.lock */,
 				3E8DA8A81BFEF72900A44E7D /* Sources */,
 				3E8DA8A91BFEF72900A44E7D /* Frameworks */,
 				3E8DA8AA1BFEF72900A44E7D /* Resources */,
-				EF66839FF9E3057C70DC49A2 /* Copy Pods Resources */,
+				82B574113AF38B8D50CF05F6 /* [CP] Embed Pods Frameworks */,
+				F5706A2ECE3FE166414AC6F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,14 +198,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BAEB429F3530A1C6FEABDC3E /* Check Pods Manifest.lock */ = {
+		82B574113AF38B8D50CF05F6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HUIKitDemo/Pods-HUIKitDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED87668912021129CA31BDCE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,19 +228,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EF66839FF9E3057C70DC49A2 /* Copy Pods Resources */ = {
+		F5706A2ECE3FE166414AC6F8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HUIKitDemo/Pods-HUIKitDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -329,7 +345,7 @@
 		};
 		3E8DA8DA1BFEF72900A44E7D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7B1BE4AF141F7163F8977DD /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 6F299592B9A7AC16C8926056 /* Pods-HUIKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
@@ -344,7 +360,7 @@
 		};
 		3E8DA8DB1BFEF72900A44E7D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57E3878CB53025AB8F5D0ACA /* Pods.release.xcconfig */;
+			baseConfigurationReference = 6CE005BEC86E8667721F2B77 /* Pods-HUIKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
