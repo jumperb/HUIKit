@@ -13,7 +13,7 @@
 
 @interface HWebButtonView()
 @property (nonatomic) NSString *lastURL;
-@property (nonatomic) UIImageView *imageView;
+
 @end
 
 @implementation HWebButtonView
@@ -73,23 +73,51 @@
     return _imageView;
 }
 
-- (BOOL)setImageUrl:(NSURL *)url
+- (void)setImage:(UIImage *)image
+{
+    self.imageView.image = image;
+    self.lastURL = nil;
+    self.placeHoderImage = nil;
+}
+
+
+- (void)setImageUrl:(NSURL *)url
+{
+    return [self setImageUrl:url syncLoadCache:NO];
+}
+
+- (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache
 {
     if (self.imageView.image && [_lastURL isEqual:url.absoluteString])
     {
         self.imageView.alpha = 1;
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);
-        return YES;
     }
+    
     if(!self.placeHoderImage) self.imageView.alpha = 0;
-    UIImage *placeholder = self.placeHoderImage;
-    if ([[SDWebImageManager sharedManager] cachedImageExistsForURL:url])
-    {
-        self.imageView.alpha = 1;
-        placeholder = nil;
-    }
-    self.imageView.image = nil;
+    
+    __block UIImage *placeholder = self.placeHoderImage;
     __weak typeof(self) weakSelf = self;
+    
+    [[SDWebImageManager sharedManager] cachedImageExistsForURL:url completion:^(BOOL isInCache) {
+        if (isInCache)
+        {
+            weakSelf.imageView.alpha = 1;
+            placeholder = nil;
+            if (syncLoadCache)
+            {
+                NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
+                UIImage *image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:key];
+                self.imageView.image = image;
+                
+                self.lastURL = url.absoluteString;
+                if (self.didGetImage) self.didGetImage(self, image);
+            }
+        }
+    }];
+    
+    self.imageView.image = nil;
+    
     [self.imageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (error)
         {
@@ -104,8 +132,8 @@
             if (weakSelf.didGetImage) weakSelf.didGetImage(weakSelf, image);
         }
     }];
-    return NO;
 }
+
 - (void)buttonPressed
 {
     if (_pressed) _pressed(self, nil);
