@@ -13,14 +13,30 @@
 @property (nonatomic) UIImage *placeHoderImage;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) id userInfo;
+@property (nonatomic) BOOL doMemoryWarn;
 @property (nonatomic, strong) callback didGetImage;
 @property (nonatomic, strong) callback didGetError;
 /**
  *  设置图片链接
  *
  *  @param url 链接
+ */
+- (void)setImageUrl:(NSURL *)url;
+
+/**
+ *  设置图片链接,如果有缓存同步读取缓存
+ *
+ *  @param url           链接
+ *  @param syncLoadCache 是否同步读缓存
  *
  *  @return 同步的(YES)还是异步的(NO)
  */
-- (BOOL)setImageUrl:(NSURL *)url;
+- (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache;
+
+/**
+ *  直接设置图片
+ *
+ *  @param image 图片
+ */
+- (void)setImage:(UIImage *)image;
 @end

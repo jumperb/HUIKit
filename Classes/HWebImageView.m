@@ -21,6 +21,7 @@
     self = [super initWithFrame:CGRectMake(0, 0, 200, 200)];
     if (self) {
         [self addSubview:self.imageView];
+        _doMemoryWarn = YES;
         self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(memoryWarning:)
@@ -31,8 +32,11 @@
 
 - (void)memoryWarning:(NSNotification *)notifation
 {
-    self.imageView.image = nil;
-    _lastURL = nil;
+    if (self.doMemoryWarn)
+    {
+        self.imageView.image = nil;
+        _lastURL = nil;
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -40,6 +44,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:self.imageView];
+        _doMemoryWarn = YES;
         self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
     }
     return self;
@@ -54,7 +59,7 @@
         _imageView.layer.masksToBounds = YES;
     }
     return _imageView;
-
+    
 }
 - (void)setFrame:(CGRect)frame
 {
@@ -66,23 +71,51 @@
     [super setBounds:bounds];
     _imageView.frame = self.bounds;
 }
-- (BOOL)setImageUrl:(NSURL *)url
+- (void)setImage:(UIImage *)image
+{
+    self.imageView.image = image;
+    self.lastURL = nil;
+    self.placeHoderImage = nil;
+}
+- (void)setImageUrl:(NSURL *)url
+{
+    return [self setImageUrl:url syncLoadCache:NO];
+}
+
+- (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache
 {
     if (self.imageView.image && [_lastURL isEqual:url.absoluteString])
     {
         self.imageView.alpha = 1;
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);
-        return YES;
     }
     if(!self.placeHoderImage) self.imageView.alpha = 0;
-    UIImage *placeholder = self.placeHoderImage;
-    if ([[SDWebImageManager sharedManager] cachedImageExistsForURL:url])
-    {
-        self.imageView.alpha = 1;
-        placeholder = nil;
-    }
-    self.imageView.image = nil;
+    __block UIImage *placeholder = self.placeHoderImage;
+    
     __weak typeof(self) weakSelf = self;
+    
+    [[SDWebImageManager sharedManager] cachedImageExistsForURL:url completion:^(BOOL isInCache) {
+        
+        if (isInCache)
+        {
+            weakSelf.imageView.alpha = 1;
+            placeholder = nil;
+            
+            if (syncLoadCache)
+            {
+                NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
+                UIImage *image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:key];
+                weakSelf.imageView.image = image;
+                
+                weakSelf.lastURL = url.absoluteString;
+                if (weakSelf.didGetImage) weakSelf.didGetImage(weakSelf, image);
+                
+            }
+        }
+    }];
+    
+    self.imageView.image = nil;
+    
     [_imageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (error)
         {
@@ -97,7 +130,6 @@
             if (weakSelf.didGetImage) weakSelf.didGetImage(weakSelf, image);
         }
     }];
-    return NO;
 }
 
 - (void)dealloc
