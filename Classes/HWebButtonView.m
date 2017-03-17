@@ -92,6 +92,7 @@
     {
         self.imageView.alpha = 1;
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);
+        return;
     }
     
     if(!self.placeHoderImage) self.imageView.alpha = 0;
