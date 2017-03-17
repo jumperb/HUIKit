@@ -93,23 +93,23 @@
     if(!self.placeHoderImage) self.imageView.alpha = 0;
     __block UIImage *placeholder = self.placeHoderImage;
     
-    __weak typeof(self) weakSelf = self;
-    
+    @weakify(self);
     [[SDWebImageManager sharedManager] cachedImageExistsForURL:url completion:^(BOOL isInCache) {
-        
+        @strongify(self);
+        if (self.cacheStatusCallback) self.cacheStatusCallback(self, isInCache?@(YES):nil);
         if (isInCache)
         {
-            weakSelf.imageView.alpha = 1;
+            self.imageView.alpha = 1;
             placeholder = nil;
             
             if (syncLoadCache)
             {
                 NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
                 UIImage *image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:key];
-                weakSelf.imageView.image = image;
+                self.imageView.image = image;
                 
-                weakSelf.lastURL = url.absoluteString;
-                if (weakSelf.didGetImage) weakSelf.didGetImage(weakSelf, image);
+                self.lastURL = url.absoluteString;
+                if (self.didGetImage) self.didGetImage(self, image);
                 
             }
         }
@@ -118,17 +118,18 @@
     self.imageView.image = nil;
     
     [_imageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        @strongify(self);
         if (error)
         {
-            if (weakSelf.didGetError) weakSelf.didGetError(weakSelf, error);
+            if (self.didGetError) self.didGetError(self, error);
         }
         else if (image)
         {
-            weakSelf.lastURL = url.absoluteString;
+            self.lastURL = url.absoluteString;
             [UIView animateWithDuration:0.5 animations:^{
-                weakSelf.imageView.alpha = 1;
+                self.imageView.alpha = 1;
             }];
-            if (weakSelf.didGetImage) weakSelf.didGetImage(weakSelf, image);
+            if (self.didGetImage) self.didGetImage(self, image);
         }
     }];
 }

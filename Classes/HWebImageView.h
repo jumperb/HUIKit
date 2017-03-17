@@ -14,8 +14,9 @@
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) id userInfo;
 @property (nonatomic) BOOL doMemoryWarn;
-@property (nonatomic, strong) callback didGetImage;
-@property (nonatomic, strong) callback didGetError;
+@property (nonatomic) callback cacheStatusCallback;//无缓存，data为空
+@property (nonatomic) callback didGetImage;
+@property (nonatomic) callback didGetError;
 /**
  *  设置图片链接
  *

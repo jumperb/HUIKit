@@ -14,9 +14,10 @@
 @property (nonatomic) UIImage *placeHoderImage;
 @property (nonatomic) UIButton *button;
 @property (nonatomic) id userInfo;
-@property (nonatomic, strong) callback pressed;
-@property (nonatomic, strong) callback didGetImage;
-@property (nonatomic, strong) callback didGetError;
+@property (nonatomic) callback cacheStatusCallback;//无缓存，data为空
+@property (nonatomic) callback pressed;
+@property (nonatomic) callback didGetImage;
+@property (nonatomic) callback didGetError;
 /**
  *  设置图片链接
  *

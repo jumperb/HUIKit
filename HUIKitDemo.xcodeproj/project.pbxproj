@@ -13,7 +13,7 @@
 		3E8DA8B41BFEF72900A44E7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B31BFEF72900A44E7D /* AppDelegate.m */; };
 		3E8DA8B71BFEF72900A44E7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DA8B61BFEF72900A44E7D /* ViewController.m */; };
 		3E8DA8BC1BFEF72900A44E7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E8DA8BB1BFEF72900A44E7D /* Assets.xcassets */; };
-		672888A7D23F88D8B8AAEDCD /* Pods_HUIKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38468502F9B4D54B0F67B45 /* Pods_HUIKitDemo.framework */; };
+		8D9072063174F14BDC3ED3CF /* libPods-HUIKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8031E9D215EC81B80408323A /* libPods-HUIKitDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		3E8DA8C01BFEF72900A44E7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CE005BEC86E8667721F2B77 /* Pods-HUIKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HUIKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HUIKitDemo/Pods-HUIKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6F299592B9A7AC16C8926056 /* Pods-HUIKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HUIKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HUIKitDemo/Pods-HUIKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		C38468502F9B4D54B0F67B45 /* Pods_HUIKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HUIKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8031E9D215EC81B80408323A /* libPods-HUIKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HUIKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				672888A7D23F88D8B8AAEDCD /* Pods_HUIKitDemo.framework in Frameworks */,
+				8D9072063174F14BDC3ED3CF /* libPods-HUIKitDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 		634800185F6C4C623E5C2ED6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C38468502F9B4D54B0F67B45 /* Pods_HUIKitDemo.framework */,
+				8031E9D215EC81B80408323A /* libPods-HUIKitDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
