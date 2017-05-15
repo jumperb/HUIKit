@@ -76,6 +76,8 @@
     self.imageView.image = image;
     self.lastURL = nil;
     self.placeHoderImage = nil;
+    self.imageView.alpha = 1;
+    self.didGetImage(self, image);
 }
 - (void)setImageUrl:(NSURL *)url
 {
@@ -94,6 +96,8 @@
     __block UIImage *placeholder = self.placeHoderImage;
     
     @weakify(self);
+    
+    self.imageView.image = nil;
     [[SDWebImageManager sharedManager] cachedImageExistsForURL:url completion:^(BOOL isInCache) {
         @strongify(self);
         if (self.cacheStatusCallback) self.cacheStatusCallback(self, isInCache?@(YES):nil);
@@ -113,23 +117,25 @@
                 
             }
         }
-    }];
-    
-    self.imageView.image = nil;
-    
-    [_imageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        @strongify(self);
-        if (error)
+        
+        
+        if (!self.imageView.image)
         {
-            if (self.didGetError) self.didGetError(self, error);
-        }
-        else if (image)
-        {
-            self.lastURL = url.absoluteString;
-            [UIView animateWithDuration:0.5 animations:^{
-                self.imageView.alpha = 1;
+            [_imageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                @strongify(self);
+                if (error)
+                {
+                    if (self.didGetError) self.didGetError(self, error);
+                }
+                else if (image)
+                {
+                    self.lastURL = url.absoluteString;
+                    [UIView animateWithDuration:0.5 animations:^{
+                        self.imageView.alpha = 1;
+                    }];
+                    if (self.didGetImage) self.didGetImage(self, image);
+                }
             }];
-            if (self.didGetImage) self.didGetImage(self, image);
         }
     }];
 }
