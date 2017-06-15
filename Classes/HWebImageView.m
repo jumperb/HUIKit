@@ -86,6 +86,14 @@
 
 - (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache
 {
+    NSString *schema = url.scheme.lowercaseString;
+    if (![schema hasPrefix:@"http"])
+    {
+        self.imageView.image = [UIImage imageNamed:url.absoluteString];
+        self.imageView.alpha = 1;
+        if (self.didGetImage) self.didGetImage(self, self.imageView.image);
+        return;
+    }
     if (self.imageView.image && [_lastURL isEqual:url.absoluteString])
     {
         self.imageView.alpha = 1;
