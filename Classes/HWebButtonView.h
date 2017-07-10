@@ -14,7 +14,7 @@
 @property (nonatomic) UIImage *placeHoderImage;
 @property (nonatomic) UIButton *button;
 @property (nonatomic) id userInfo;
-@property (nonatomic) callback cacheStatusCallback;//无缓存，data为空
+
 @property (nonatomic) callback pressed;
 @property (nonatomic) callback didGetImage;
 @property (nonatomic) callback didGetError;
@@ -23,7 +23,6 @@
  *
  *  @param url 链接
  *
- *  @return 同步的(YES)还是异步的(NO)
  */
 - (void)setImageUrl:(NSURL *)url;
 
@@ -33,7 +32,6 @@
  *  @param url           链接
  *  @param syncLoadCache 是否同步读缓存
  *
- *  @return 同步的(YES)还是异步的(NO)
  */
 - (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache;
 
