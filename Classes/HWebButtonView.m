@@ -21,9 +21,7 @@
 {
     self = [super initWithFrame:CGRectMake(0, 0, 200, 200)];
     if (self) {
-        [self addSubview:self.button];
-        [self addSubview:self.imageView];
-        self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
+        [self setup];
     }
     return self;
 }
@@ -31,11 +29,23 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:self.button];
-        [self addSubview:self.imageView];
-        self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
+        [self setup];
     }
     return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+- (void)setup
+{
+    [self addSubview:self.button];
+    [self addSubview:self.imageView];
+    self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
 }
 - (void)setFrame:(CGRect)frame
 {

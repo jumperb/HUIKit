@@ -20,16 +20,36 @@
 {
     self = [super initWithFrame:CGRectMake(0, 0, 200, 200)];
     if (self) {
-        [self addSubview:self.imageView];
-        _doMemoryWarn = YES;
-        self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(memoryWarning:)
-                                                     name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+        [self setup];
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+- (void)setup
+{
+    [self addSubview:self.imageView];
+    self.doMemoryWarn = YES;
+    self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(memoryWarning:)
+                                                 name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 
+}
 - (void)memoryWarning:(NSNotification *)notifation
 {
     if (self.doMemoryWarn)
@@ -39,16 +59,7 @@
     }
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self addSubview:self.imageView];
-        _doMemoryWarn = YES;
-        self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
-    }
-    return self;
-}
+
 
 - (UIImageView *)imageView
 {
