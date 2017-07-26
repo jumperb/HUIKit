@@ -97,6 +97,14 @@
 
 - (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache
 {
+    NSString *urlString = url.scheme.lowercaseString;
+    if (urlString.length == 0)
+    {
+        self.imageView.image = nil;
+        self.lastURL = nil;
+        if (self.didGetError) self.didGetError(self, herr(kDataFormatErrorCode, ([NSString stringWithFormat:@"url = %@", urlString])));
+        return;
+    }
     NSString *schema = url.scheme.lowercaseString;
     if (![schema hasPrefix:@"http"])
     {
