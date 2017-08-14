@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "HWebImageView.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    HWebImageView *imageView = [[HWebImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [imageView setImageUrlString:@""];
 }
 
 - (void)didReceiveMemoryWarning {

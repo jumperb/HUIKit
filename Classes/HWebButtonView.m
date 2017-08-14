@@ -93,7 +93,7 @@
 }
 - (void)setImageUrl:(NSURL *)url
 {
-    return [self setImageUrl:url syncLoadCache:NO];
+    [self setImageUrl:url syncLoadCache:NO];
 }
 
 - (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache
@@ -103,7 +103,7 @@
 
 - (void)setImageUrlString:(NSString *)urlString
 {
-    return [self setImageUrlString:urlString syncLoadCache:NO];
+    [self setImageUrlString:urlString syncLoadCache:NO];
 }
 
 - (void)setImageUrlString:(NSString *)urlString syncLoadCache:(BOOL)syncLoadCache
