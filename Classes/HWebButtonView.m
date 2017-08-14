@@ -91,8 +91,6 @@
     self.imageView.alpha = 1;
     self.didGetImage(self, image);
 }
-
-
 - (void)setImageUrl:(NSURL *)url
 {
     return [self setImageUrl:url syncLoadCache:NO];
@@ -100,7 +98,16 @@
 
 - (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache
 {
-    NSString *urlString = url.scheme.lowercaseString;
+    [self setImageUrlString:url.absoluteString syncLoadCache:syncLoadCache];
+}
+
+- (void)setImageUrlString:(NSString *)urlString
+{
+    return [self setImageUrlString:urlString syncLoadCache:NO];
+}
+
+- (void)setImageUrlString:(NSString *)urlString syncLoadCache:(BOOL)syncLoadCache
+{
     if (urlString.length == 0)
     {
         self.imageView.image = nil;
@@ -108,15 +115,16 @@
         if (self.didGetError) self.didGetError(self, herr(kDataFormatErrorCode, ([NSString stringWithFormat:@"url = %@", urlString])));
         return;
     }
+    NSURL *url = [NSURL URLWithString:urlString];
     NSString *schema = url.scheme.lowercaseString;
     if (![schema hasPrefix:@"http"])
     {
-        self.imageView.image = [UIImage imageNamed:url.absoluteString];
+        self.imageView.image = [UIImage imageNamed:urlString];
         self.imageView.alpha = 1;
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);
         return;
     }
-    if (self.imageView.image && [_lastURL isEqual:url.absoluteString])
+    if (self.imageView.image && [_lastURL isEqual:urlString])
     {
         self.imageView.alpha = 1;
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);

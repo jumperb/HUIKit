@@ -32,6 +32,23 @@
 - (void)setImageUrl:(NSURL *)url syncLoadCache:(BOOL)syncLoadCache;
 
 /**
+ *  设置图片链接
+ *
+ *  @param urlString 链接字符串
+ *
+ */
+- (void)setImageUrlString:(NSString *)urlString;
+
+/**
+ *  设置图片链接,如果有缓存同步读取缓存
+ *
+ *  @param urlString           链接字符串
+ *  @param syncLoadCache 是否同步读缓存
+ *
+ */
+- (void)setImageUrlString:(NSString *)urlString syncLoadCache:(BOOL)syncLoadCache;
+
+/**
  *  直接设置图片
  *
  *  @param image 图片
