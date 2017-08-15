@@ -92,7 +92,7 @@
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);
         return;
     }
-    if(!self.placeHoderImage) self.imageView.alpha = 0;
+    if(!self.placeHoderImage && !self.imageView.image) self.imageView.alpha = 0;
     __block UIImage *placeholder = self.placeHoderImage;
     
     @weakify(self);
