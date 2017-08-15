@@ -43,20 +43,7 @@
 - (void)setup
 {
     [self addSubview:self.imageView];
-    self.doMemoryWarn = YES;
     self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(memoryWarning:)
-                                                 name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-
-}
-- (void)memoryWarning:(NSNotification *)notifation
-{
-    if (self.doMemoryWarn)
-    {
-        self.imageView.image = nil;
-        _lastURL = nil;
-    }
 }
 
 
@@ -168,10 +155,4 @@
     }
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIApplicationDidReceiveMemoryWarningNotification
-                                                  object:nil];
-}
 @end

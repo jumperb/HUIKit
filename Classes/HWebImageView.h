@@ -13,7 +13,6 @@
 @property (nonatomic) UIImage *placeHoderImage;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) id userInfo;
-@property (nonatomic) BOOL doMemoryWarn;
 @property (nonatomic) callback didGetImage;
 @property (nonatomic) callback didGetError;
 /**
