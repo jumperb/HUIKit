@@ -84,9 +84,9 @@
 }
 - (void)_setImage:(UIImage *)image
 {
-    if (self.tintColor)
+    if (self.renderColor)
     {
-        self.imageView.tintColor = self.tintColor;
+        self.imageView.tintColor = self.renderColor;
         self.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     }
     else
@@ -94,12 +94,12 @@
         self.imageView.image = image;
     }
 }
-- (void)setTintColor:(UIColor *)tintColor
+- (void)setRenderColor:(UIColor *)renderColor
 {
-    [super setTintColor:tintColor];
-    if (self.tintColor)
+    _renderColor = renderColor;
+    if (self.renderColor)
     {
-        self.imageView.tintColor = self.tintColor;
+        self.imageView.tintColor = self.renderColor;
         self.imageView.image = [self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     }
     else

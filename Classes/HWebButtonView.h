@@ -11,7 +11,7 @@
 
 @interface HWebButtonView : UIView
 @property (nonatomic) UIImageView *imageView;
-//@property (nonatomic) UIColor *tintColor; //注意这个虽然注释掉是因为父类有了，但是这里是可用的
+@property (nonatomic) UIColor *renderColor; //父类那个tintColor有问题
 @property (nonatomic) UIImage *placeHoderImage;
 @property (nonatomic) UIButton *button;
 @property (nonatomic) id userInfo;
