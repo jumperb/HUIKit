@@ -82,10 +82,34 @@
     }
     return _imageView;
 }
-
+- (void)_setImage:(UIImage *)image
+{
+    if (self.tintColor)
+    {
+        self.imageView.tintColor = self.tintColor;
+        self.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    else
+    {
+        self.imageView.image = image;
+    }
+}
+- (void)setTintColor:(UIColor *)tintColor
+{
+    [super setTintColor:tintColor];
+    if (self.tintColor)
+    {
+        self.imageView.tintColor = self.tintColor;
+        self.imageView.image = [self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    else
+    {
+        self.imageView.image = [self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+}
 - (void)setImage:(UIImage *)image
 {
-    self.imageView.image = image;
+    [self _setImage:image];
     self.lastURL = nil;
     self.placeHoderImage = nil;
     self.imageView.alpha = 1;
@@ -119,7 +143,8 @@
     NSString *schema = url.scheme.lowercaseString;
     if (![schema hasPrefix:@"http"])
     {
-        self.imageView.image = [UIImage imageNamed:urlString];
+        UIImage *image = [UIImage imageNamed:urlString];
+        [self _setImage:image];
         self.imageView.alpha = 1;
         if (self.didGetImage) self.didGetImage(self, self.imageView.image);
         return;
@@ -143,7 +168,7 @@
         UIImage *image = [[SDWebImageManager sharedManager].imageCache imageFromCacheForKey:key];
         if (image)
         {
-            self.imageView.image = image;
+            [self _setImage:image];
             self.imageView.alpha = 1;
             self.lastURL = url.absoluteString;
             if (self.didGetImage) self.didGetImage(self, image);
@@ -159,6 +184,7 @@
             }
             else if (image)
             {
+                [self _setImage:image];
                 self.lastURL = url.absoluteString;
                 [UIView animateWithDuration:0.5 animations:^{
                     self.imageView.alpha = 1;
