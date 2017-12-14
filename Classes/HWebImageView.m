@@ -71,14 +71,21 @@
 }
 - (void)_setImage:(UIImage *)image
 {
-    if (self.renderColor)
+    if (image != nil)
     {
-        self.imageView.tintColor = self.renderColor;
-        self.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        if (self.renderColor)
+        {
+            self.imageView.tintColor = self.renderColor;
+            self.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        }
+        else
+        {
+            self.imageView.image = image;
+        }
     }
     else
     {
-        self.imageView.image = image;
+        self.imageView.image = nil;
     }
 }
 - (void)setRenderColor:(UIColor *)renderColor
@@ -121,7 +128,7 @@
 {
     if (urlString.length == 0)
     {
-        self.imageView.image = nil;
+        [self _setImage:nil];
         self.lastURL = nil;
         if (self.didGetError) self.didGetError(self, herr(kDataFormatErrorCode, ([NSString stringWithFormat:@"url = %@", urlString])));
         return;
@@ -146,7 +153,7 @@
     
     @weakify(self);
     
-    self.imageView.image = nil;
+    [self _setImage:nil];
     
     if (syncLoadCache)
     {

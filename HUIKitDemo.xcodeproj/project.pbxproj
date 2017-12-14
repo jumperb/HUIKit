@@ -21,10 +21,6 @@
 		00BEDDF71C5862C1002E3228 /* HWebButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWebButtonView.m; sourceTree = "<group>"; };
 		00BEDDF81C5862C1002E3228 /* HWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWebImageView.h; sourceTree = "<group>"; };
 		00BEDDF91C5862C1002E3228 /* HWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWebImageView.m; sourceTree = "<group>"; };
-		00CB56311C33738000380F74 /* HWebButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWebButtonView.h; sourceTree = "<group>"; };
-		00CB56321C33738000380F74 /* HWebButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWebButtonView.m; sourceTree = "<group>"; };
-		00CB56331C33738000380F74 /* HWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWebImageView.h; sourceTree = "<group>"; };
-		00CB56341C33738000380F74 /* HWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWebImageView.m; sourceTree = "<group>"; };
 		3E8DA8AC1BFEF72900A44E7D /* HUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8DA8B01BFEF72900A44E7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3E8DA8B21BFEF72900A44E7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,17 +57,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		00CB56301C33738000380F74 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				00CB56311C33738000380F74 /* HWebButtonView.h */,
-				00CB56321C33738000380F74 /* HWebButtonView.m */,
-				00CB56331C33738000380F74 /* HWebImageView.h */,
-				00CB56341C33738000380F74 /* HWebImageView.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		0F4819C556BC603552362DA9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +88,6 @@
 		3E8DA8AE1BFEF72900A44E7D /* HUIKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				00CB56301C33738000380F74 /* Classes */,
 				3E8DA8B21BFEF72900A44E7D /* AppDelegate.h */,
 				3E8DA8B31BFEF72900A44E7D /* AppDelegate.m */,
 				3E8DA8B51BFEF72900A44E7D /* ViewController.h */,
