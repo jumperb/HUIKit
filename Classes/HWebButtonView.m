@@ -169,6 +169,7 @@
     
     @weakify(self);
     [self _setImage:nil];
+    self.lastURL = nil;
     if (syncLoadCache)
     {
         NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
@@ -193,9 +194,16 @@
             {
                 [self _setImage:image];
                 self.lastURL = url.absoluteString;
-                [UIView animateWithDuration:0.5 animations:^{
+                if (SDImageCacheTypeNone == cacheType)
+                {
+                    [UIView animateWithDuration:0.5 animations:^{
+                        self.imageView.alpha = 1;
+                    }];
+                }
+                else
+                {
                     self.imageView.alpha = 1;
-                }];
+                }
                 if (self.didGetImage) self.didGetImage(self, image);
             }
         }];
