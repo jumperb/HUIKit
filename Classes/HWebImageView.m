@@ -9,6 +9,7 @@
 #import "HWebImageView.h"
 #import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIView+WebCache.h>
 
 @interface HWebImageView ()
 @property (nonatomic) NSString *lastURL;
@@ -71,6 +72,7 @@
 }
 - (void)_setImage:(UIImage *)image
 {
+    [self.imageView sd_cancelCurrentImageLoad];
     if (image != nil)
     {
         if (self.renderColor)
