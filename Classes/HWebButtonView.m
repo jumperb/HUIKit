@@ -120,7 +120,10 @@
     self.lastURL = nil;
     self.placeHoderImage = nil;
     self.imageView.alpha = 1;
-    self.didGetImage(self, image);
+    if (self.didGetImage)
+    {
+        self.didGetImage(self, image);
+    }
 }
 - (void)setImageUrl:(NSURL *)url
 {
