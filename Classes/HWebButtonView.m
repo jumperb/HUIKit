@@ -110,10 +110,15 @@
     {
         self.imageView.tintColor = self.renderColor;
         self.imageView.image = [self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        self.button.tintColor = self.renderColor;
+        [self.button setImage:[self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     }
     else
     {
         self.imageView.image = [self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        [self.button setImage:[self.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }
 }
 - (void)setImage:(UIImage *)image
