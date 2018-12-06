@@ -11,7 +11,7 @@
 
 @interface HWebImageView : UIView
 @property (nonatomic) UIImage *placeHoderImage;
-@property (nonatomic) UIImageView *imageView;
+@property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic) UIColor *renderColor; //父类那个tintColor有问题
 @property (nonatomic) id userInfo;
 @property (nonatomic) callback didGetImage;
