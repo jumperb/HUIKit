@@ -18,6 +18,7 @@
 {
     [self addSubview:self.button];
     [super setup];
+    self.backgroundColor = nil;
 }
 - (void)setFrame:(CGRect)frame
 {
