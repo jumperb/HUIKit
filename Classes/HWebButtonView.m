@@ -46,14 +46,19 @@
 - (void)setRenderColor:(UIColor *)renderColor
 {
     [super setRenderColor:renderColor];
+    UIImage *image = [self.button imageForState:UIControlStateNormal];
     if (self.renderColor)
     {
         self.button.tintColor = self.renderColor;
-        [self.button setImage:[[self.button imageForState:UIControlStateNormal] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        if (image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+            [self.button setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        }
     }
     else
     {
-        [self.button setImage:[[self.button imageForState:UIControlStateNormal] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        if (image.renderingMode != UIImageRenderingModeAlwaysOriginal) {
+            [self.button setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        }
     }
 }
 

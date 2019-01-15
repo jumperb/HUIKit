@@ -99,7 +99,9 @@
     {
         if (self.renderColor)
         {
-            self.mImageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+                self.mImageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            }
         }
         else
         {
@@ -118,11 +120,15 @@
     if (self.mImageView.animatedImage) return;
     if (self.renderColor)
     {
-        self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+            self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        }
     }
     else
     {
-        self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysOriginal) {
+            self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        }
     }
 }
 - (void)setImage:(UIImage *)image
