@@ -138,6 +138,34 @@
     self.placeHoderImage = nil;
     self.mImageView.alpha = 1;
 }
+- (void)setImagePath:(NSString *)path {
+    [self sd_cancelCurrentImageLoad];
+    self.lastURL = nil;
+    self.placeHoderImage = nil;
+    self.mImageView.image = nil;
+    self.mImageView.animatedImage = nil;
+    self.mImageView.alpha = 0;
+    asyncAtQueue(dispatch_get_global_queue(0, 0), ^{
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        if (data) {
+            if ([NSData sd_imageFormatForImageData:data] == SDImageFormatGIF) {
+                FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:data];
+                asyncAtMain(^{
+                    self.mImageView.animatedImage = animatedImage;
+                    self.mImageView.alpha = 1;
+                });
+            }
+            else {
+                UIImage *image = [UIImage imageWithData:data];
+                asyncAtMain(^{
+                    [self _setImage:image];
+                    self.mImageView.alpha = 1;
+                });
+                
+            }
+        }
+    });
+}
 - (void)setImageUrl:(NSURL *)url
 {
     [self setImageUrl:url syncLoadCache:NO];

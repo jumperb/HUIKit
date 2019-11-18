@@ -54,4 +54,11 @@
  *  @param image 图片
  */
 - (void)setImage:(UIImage *)image;
+
+/**
+*  直接设置图片路径
+*
+*  @param path 路径
+*/
+- (void)setImagePath:(NSString *)path;
 @end
