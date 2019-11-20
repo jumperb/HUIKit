@@ -185,7 +185,7 @@
 {
     if (urlString.length == 0)
     {
-        [self _setImage:nil];
+        [self _setImage:self.placeHoderImage];
         self.lastURL = nil;
         if (self.didGetError) self.didGetError(self, herr(kDataFormatErrorCode, ([NSString stringWithFormat:@"url = %@", urlString])));
         return;
