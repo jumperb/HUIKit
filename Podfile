@@ -1,9 +1,9 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 
-platform :ios, '7.0'
+platform :ios, '8.0'
 
 target 'HUIKitDemo' do
   pod "Hodor"
   pod "SDWebImage"
-  pod "FLAnimatedImage"
+  pod "SDWebImageFLPlugin"
 end
