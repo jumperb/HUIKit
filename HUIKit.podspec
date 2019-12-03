@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HUIKit"
-  s.version      = "1.3.8"
+  s.version      = "1.3.9"
   s.summary      = "A short description of HUIKit."
 
   s.description  = <<-DESC
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.source_files  = 'Classes/**/*.{h,m}'
   s.dependency 'Hodor'
   s.dependency 'SDWebImage'
-  s.dependency 'FLAnimatedImage'
+  s.dependency 'SDWebImageFLPlugin'
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
   
