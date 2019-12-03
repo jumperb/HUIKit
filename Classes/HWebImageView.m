@@ -210,7 +210,7 @@
                 self.lastURL = url.absoluteString;
                 if (SDImageCacheTypeNone == cacheType)
                 {
-                    [UIView animateWithDuration:0.2 animations:^{
+                    [UIView animateWithDuration:0.5 animations:^{
                         self.mImageView.alpha = 1;
                     }];
                 }
