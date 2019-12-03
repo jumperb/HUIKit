@@ -54,7 +54,15 @@
     [self addSubview:self.mImageView];
     self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
 }
-
+- (FLAnimatedImageView *)mImageView {
+    if (!_mImageView) {
+        _mImageView = [[FLAnimatedImageView alloc] initWithFrame:self.bounds];
+        _mImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _mImageView.layer.masksToBounds = YES;
+        _mImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    }
+    return _mImageView;
+}
 - (UIImageView *)imageView
 {
     return self.mImageView;
@@ -73,32 +81,18 @@
 {
     [self sd_cancelCurrentImageLoad];
     self.mImageView.animatedImage = nil;
-    if (image != nil)
-    {
-        if (self.renderColor)
-        {
-            if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
-                self.mImageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            }
-        }
-        else
-        {
-            self.mImageView.image = image;
-        }
-    }
-    else
-    {
-        self.mImageView.image = nil;
-    }
+    self.mImageView.image = image;
+    self.mImageView.alpha = 1;
+    [self applyRenderColor];
+    if (self.didGetImage) self.didGetImage(self, self.mImageView.image);
 }
-- (void)setRenderColor:(UIColor *)renderColor
-{
-    _renderColor = renderColor;
-    self.mImageView.tintColor = self.renderColor;
+- (void)applyRenderColor {
     if (self.mImageView.animatedImage) return;
+    if (!self.mImageView.image) return;
+    
     if (self.renderColor)
     {
-        if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+        if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate && self.mImageView.image != self.placeHoderImage) {
             self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         }
     }
@@ -109,12 +103,18 @@
         }
     }
 }
+- (void)setRenderColor:(UIColor *)renderColor
+{
+    _renderColor = renderColor;
+    self.mImageView.tintColor = self.renderColor;
+    if (self.mImageView.animatedImage) return;
+    [self applyRenderColor];
+}
 - (void)setImage:(UIImage *)image
 {
     [self _setImage:image];
     self.lastURL = nil;
     self.placeHoderImage = nil;
-    self.mImageView.alpha = 1;
 }
 - (void)setImagePath:(NSString *)path {
     [self sd_cancelCurrentImageLoad];
@@ -137,7 +137,6 @@
                 UIImage *image = [UIImage imageWithData:data];
                 asyncAtMain(^{
                     [self _setImage:image];
-                    self.mImageView.alpha = 1;
                 });
                 
             }
@@ -173,8 +172,6 @@
     if (![schema hasPrefix:@"http"])
     {
         [self _setImage:[UIImage imageNamed:urlString]];
-        self.mImageView.alpha = 1;
-        if (self.didGetImage) self.didGetImage(self, self.mImageView.image);
         return;
     }
     if ([_lastURL isEqual:urlString] && (self.mImageView.animatedImage || self.mImageView.image))
@@ -196,9 +193,7 @@
         if (image)
         {
             [self _setImage:image];
-            self.mImageView.alpha = 1;
             self.lastURL = url.absoluteString;
-            if (self.didGetImage) self.didGetImage(self, image);
         }
     }
     if (!self.mImageView.image)
@@ -215,7 +210,7 @@
                 self.lastURL = url.absoluteString;
                 if (SDImageCacheTypeNone == cacheType)
                 {
-                    [UIView animateWithDuration:0.5 animations:^{
+                    [UIView animateWithDuration:0.2 animations:^{
                         self.mImageView.alpha = 1;
                     }];
                 }
@@ -223,7 +218,9 @@
                 {
                     self.mImageView.alpha = 1;
                 }
-                [self _setImage:image];
+                if (image.class != SDFLAnimatedImage.class) {
+                    [self applyRenderColor];
+                }
                 if (self.didGetImage) self.didGetImage(self, image);
             }
         }];
