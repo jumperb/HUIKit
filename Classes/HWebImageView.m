@@ -84,7 +84,6 @@
     self.mImageView.image = image;
     self.mImageView.alpha = 1;
     [self applyRenderColor];
-    if (self.didGetImage) self.didGetImage(self, self.mImageView.image);
 }
 - (void)applyRenderColor {
     if (self.mImageView.animatedImage) return;
@@ -177,7 +176,6 @@
     if ([_lastURL isEqual:urlString] && (self.mImageView.animatedImage || self.mImageView.image))
     {
         self.mImageView.alpha = 1;
-        if (self.didGetImage) self.didGetImage(self, self.mImageView.image);
         return;
     }
     if(!self.placeHoderImage && !self.mImageView.animatedImage && !self.mImageView.image) self.mImageView.alpha = 0;
