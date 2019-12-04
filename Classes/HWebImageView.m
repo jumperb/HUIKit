@@ -98,8 +98,8 @@
     }
     else
     {
-        if (self.mImageView.image.renderingMode != UIImageRenderingModeAlwaysOriginal) {
-            self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        if (self.mImageView.image.renderingMode == UIImageRenderingModeAlwaysTemplate) {
+            self.mImageView.image = [self.mImageView.image imageWithRenderingMode:UIImageRenderingModeAutomatic];
         }
     }
 }
