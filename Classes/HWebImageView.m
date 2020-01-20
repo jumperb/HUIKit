@@ -11,7 +11,7 @@
 #import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/NSData+ImageContentType.h>
-#import <UIView+WebCache.h>
+#import <SDWebImage/UIView+WebCache.h>
 #import <Objc/runtime.h>
 #import <FLAnimatedImage/FLAnimatedImageView.h>
 #import <FLAnimatedImage/FLAnimatedImage.h>
