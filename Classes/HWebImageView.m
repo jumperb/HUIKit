@@ -52,7 +52,7 @@
 - (void)setup
 {
     [self addSubview:self.mImageView];
-    self.backgroundColor = [UIColor colorWithHex:0xe8e8e8];
+    self.backgroundColor = [UIColor h_colorWithHex:0xe8e8e8];
 }
 - (FLAnimatedImageView *)mImageView {
     if (!_mImageView) {
