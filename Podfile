@@ -6,4 +6,5 @@ target 'HUIKitDemo' do
   pod "Hodor"
   pod "SDWebImage"
   pod "SDWebImageFLPlugin"
+  pod "SDWebImageWebPCoder"
 end

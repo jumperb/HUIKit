@@ -17,6 +17,7 @@
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import <SDWebImageFLPlugin/FLAnimatedImageView+WebCache.h>
 #import <UIKit/UIKit.h>
+#import <SDWebImageWebPCoder/SDWebImageWebPCoder.h>
 
 @interface HWebImageView ()
 @property (nonatomic) FLAnimatedImageView *mImageView;
@@ -129,6 +130,12 @@
                 FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:data];
                 asyncAtMain(^{
                     self.mImageView.animatedImage = animatedImage;
+                    self.mImageView.alpha = 1;
+                });
+            }else if ([NSData sd_imageFormatForImageData:data] == SDImageFormatWebP) {
+                UIImage *webpImg = [UIImage sd_imageWithWebPData:data];
+                asyncAtMain(^{
+                    self.mImageView.image = webpImg;
                     self.mImageView.alpha = 1;
                 });
             }
