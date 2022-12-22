@@ -106,9 +106,8 @@
 - (void)setRenderColor:(UIColor *)renderColor
 {
     _renderColor = renderColor;
-    self.mImageView.tintColor = self.renderColor;
-    if (self.mImageView.animatedImage) return;
     [self applyRenderColor];
+    self.mImageView.tintColor = self.renderColor;
 }
 - (void)setImage:(UIImage *)image
 {
