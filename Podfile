@@ -1,10 +1,9 @@
-source 'https://cdn.cocoapods.org/'
-
-platform :ios, '8.0'
-
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
 target 'HUIKitDemo' do
   pod "Hodor"
   pod "SDWebImage"
   pod "SDWebImageFLPlugin"
   pod "SDWebImageWebPCoder"
+  pod 'FLAnimatedImage'
 end

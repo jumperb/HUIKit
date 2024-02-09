@@ -18,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     HWebImageView *imageView = [[HWebImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [imageView setImageUrlString:@""];
+    [imageView setImageUrlString:@"https://d.musicapp.migu.cn/prod/vrbt-template-service/template/20230323/0c918f6f-a073-46e4-bfac-4cdb1ddbfc1c.gif"];
+    [self.view addSubview:imageView];
 }
 
 - (void)didReceiveMemoryWarning {
