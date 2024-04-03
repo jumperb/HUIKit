@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
-  s.name         = "HUIKit"
-  s.version      = "1.4.8"
-  s.summary      = "A short description of HUIKit."
+  s.name = "HUIKit"
+  s.version = "1.4.8"
+  s.summary = "A short description of HUIKit."
 
   s.description  = <<-DESC
                    A longer description of HUIKit in Markdown format.
