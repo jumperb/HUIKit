@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   s.dependency 'Hodor'
   s.dependency 'SDWebImage'
   s.dependency 'SDWebImageFLPlugin'
+  s.dependency 'SDWebImageWebPCoder'
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
   
