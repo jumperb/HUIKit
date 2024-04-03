@@ -203,7 +203,7 @@
     if (!self.mImageView.image)
     {
         @weakify(self);
-        NSNumber *limitBytes = @(512 * 1024);
+        NSNumber *limitBytes = @(1024 * 1024 * 8);
         NSDictionary *userInfo = @{SDWebImageContextImageScaleDownLimitBytes : limitBytes};
         [self.mImageView sd_setImageWithURL:url placeholderImage:placeholder options:0 context:userInfo progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             @strongify(self);
