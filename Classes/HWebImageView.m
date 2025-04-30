@@ -229,6 +229,9 @@
                 }
                 if (self.didGetImage) self.didGetImage(self, image);
             }
+            else {
+                if (self.didGetError) self.didGetError(self, herr(kNoDataErrorCode, @"未知错误"));
+            }
         }];
     }
 }
